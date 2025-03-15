@@ -1,0 +1,67 @@
+[ {
+  "sender" : "user",
+  "message" : "Xin chào!"
+}, {
+  "sender" : "bot",
+  "message" : "Chào bạn! Tôi có thể giúp gì cho bạn?"
+}, {
+  "sender" : "user",
+  "message" : "Tôi cảm thấy căng thẳng gần đây."
+}, {
+  "sender" : "bot",
+  "message" : "Tôi hiểu. Bạn có thể chia sẻ điều gì đang khiến bạn lo lắng không?"
+}, {
+  "sender" : "user",
+  "message" : "Công việc nhiều quá, tôi không có thời gian nghỉ ngơi."
+}, {
+  "sender" : "bot",
+  "message" : "Làm việc quá sức có thể gây ảnh hưởng đến sức khỏe tinh thần. Bạn đã thử sắp xếp lại lịch trình chưa?"
+}, {
+  "sender" : "user",
+  "message" : "Tôi chưa biết cách bắt đầu, có quá nhiều việc phải làm."
+}, {
+  "sender" : "bot",
+  "message" : "Hãy thử liệt kê các công việc quan trọng trước, sau đó sắp xếp chúng theo mức độ ưu tiên."
+}, {
+  "sender" : "user",
+  "message" : "Tôi sẽ thử xem sao. Bạn có mẹo nào để giảm căng thẳng không?"
+}, {
+  "sender" : "bot",
+  "message" : "Bạn có thể thử hít thở sâu, tập thể dục nhẹ nhàng hoặc dành thời gian thư giãn với sở thích của mình."
+}, {
+  "sender" : "user",
+  "message" : "Nghe hay đó! Tôi sẽ thử thiền."
+}, {
+  "sender" : "bot",
+  "message" : "Thiền là một cách tuyệt vời để giảm căng thẳng. Bạn có muốn tôi hướng dẫn một bài thiền đơn giản không?"
+}, {
+  "sender" : "user",
+  "message" : "Có chứ!"
+}, {
+  "sender" : "bot",
+  "message" : "Hãy ngồi ở một nơi yên tĩnh, nhắm mắt lại và tập trung vào hơi thở của bạn. Hít vào sâu, giữ trong 3 giây, rồi thở ra từ từ."
+}, {
+  "sender" : "user",
+  "message" : "Cảm giác dễ chịu thật!"
+}, {
+  "sender" : "bot",
+  "message" : "Thật tuyệt! Bạn có thể luyện tập điều này mỗi ngày để giữ tinh thần thoải mái hơn."
+}, {
+  "sender" : "user",
+  "message" : "Cảm ơn bạn rất nhiều!"
+}, {
+  "sender" : "bot",
+  "message" : "Không có gì đâu! Nếu cần giúp đỡ thêm, tôi luôn ở đây."
+}, {
+  "sender" : "user",
+  "message" : "hi"
+}, {
+  "sender" : "bot",
+  "message" : "Hi người đẹp"
+}, {
+  "sender" : "user",
+  "message" : "hi"
+}, {
+  "sender" : "bot",
+  "message" : "Hi người đẹp"
+} ]

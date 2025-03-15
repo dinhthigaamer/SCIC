@@ -1,0 +1,19 @@
+.st {
+    -fx-background-color: #ffffff;
+    -fx-pref-height: 60px;
+    -fx-pref-width: 1464px;
+    -fx-spacing: 50px;
+    -fx-font-size: 24px;
+    -fx-font-weight: bold; 
+    -fx-alignment: top-center;
+}
+
+.stHomePage {
+    -fx-alignment: center;
+    -fx-spacing: 50px;
+}
+
+.contentbox {
+    -fx-background-color: #E2FCFB;
+}
+

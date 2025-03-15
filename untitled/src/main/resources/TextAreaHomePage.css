@@ -1,0 +1,42 @@
+/* .text-area .content{
+    -fx-background-color: #E2FCFB;
+}
+
+.text-area {
+    -fx-border-color: transparent;
+} */
+
+.no-border {
+    -fx-border-color: transparent;
+}
+
+.button {
+    -fx-background-color: #1CAFF3;
+    -fx-text-fill: white;
+}
+
+.forbox1 {
+    -fx-background-radius: 20px;
+}
+.forlabel1 {
+    -fx-font-weight: bold;
+    -fx-font-size: 48px;
+    -fx-font-weight: 600;
+    -fx-line-height: 100%;
+    -fx-padding: 10px 0 0 40px ;
+    -fx-background-radius: 20px 20px 0 0;
+    -fx-background-color: #E2FCFB;
+}
+
+.forlabel2 {
+    -fx-font-weight: bold;
+    -fx-background-color: #E2FCFB;
+    -fx-font-size: 24px;
+    -fx-padding: 0  0 0 40px;
+    -fx-background-radius: 0 0 20px 20px;
+}
+
+.forlabel3 {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}

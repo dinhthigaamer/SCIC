@@ -1,0 +1,34 @@
+.forAnchor {
+    -fx-background-color: linear-gradient(to bottom, #3358A8, #DBF2F4);
+}
+
+.scroll-pane .scroll-bar:horizontal {
+    -fx-opacity: 0;  /* Ẩn thanh cuộn ngang */
+    -fx-pref-height: 0;
+    -fx-max-height: 0;
+}
+
+.scroll-pane .scroll-bar {
+    -fx-background-color: transparent;  /* Nền trong suốt */
+    -fx-pref-width: 10px;  /* Độ rộng thanh cuộn */
+}
+
+.scroll-pane .scroll-bar .thumb {
+    -fx-background-color: #B0B0B0; /* Màu xám */
+    -fx-background-radius: 5px; /* Bo góc */
+}
+
+.scroll-pane .scroll-bar .thumb:hover {
+    -fx-background-color: #909090; /* Màu tối hơn khi hover */
+}
+
+.scroll-pane .scroll-bar .thumb:pressed {
+    -fx-background-color: #707070; /* Màu tối hơn khi click */
+}
+
+.scroll-pane .scroll-bar .increment-button,
+.scroll-pane .scroll-bar .decrement-button {
+    -fx-opacity: 0; /* Ẩn mũi tên */
+    -fx-pref-height: 0;
+}
+

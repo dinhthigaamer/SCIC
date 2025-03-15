@@ -1,0 +1,9 @@
+.st {
+    -fx-pref-height: 900px;
+    -fx-pref-width: 1464px;
+    -fx-font-size: 24px;
+    -fx-background-color: linear-gradient(to bottom, #3358A8, #DBF2F4);
+    -fx-font-weight: bold;
+    -fx-alignment: center;
+}
+

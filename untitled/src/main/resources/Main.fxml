@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+
+<?import javafx.scene.layout.VBox?>
+<AnchorPane fx:id="AP" fx:controller="org.example.MainController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="403.0" prefWidth="706.0" styleClass="st" stylesheets="@AnchorStyle.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox fx:id="menuContainer">
+<!--         <fx:include source = "/Menu.fxml" />-->
+         <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="706.0" style="-fx-pref-width: 1459; -fx-spacing: 60; -fx-background-color: white;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+            <children>
+               <Button fx:id="Button1" mnemonicParsing="false" styleClass="st" stylesheets="@buttonstyles.css" text="Trang chủ" />
+               <Button fx:id="Button2" mnemonicParsing="false" styleClass="st" stylesheets="@buttonstyles.css" text="Trò chuyện" />
+               <Button fx:id="Button3" mnemonicParsing="false" styleClass="st" stylesheets="@buttonstyles.css" text="Nhật ký cảm xúc" />
+               <Button fx:id="Button4" mnemonicParsing="false" styleClass="st" stylesheets="@buttonstyles.css" text="Thực hành chăm sóc tinh thần" />
+            </children>
+         </HBox>
+      </VBox>
+
+      <Pane fx:id="contentPane" layoutY="51.0" prefHeight="353.0" prefWidth="706.0" styleClass="st" stylesheets="@ContentStyle.css" />
+   </children>
+</AnchorPane>

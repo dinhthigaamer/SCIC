@@ -1,0 +1,19 @@
+[ {
+  "sender" : "user",
+  "message" : "hi"
+}, {
+  "sender" : "bot",
+  "message" : "Hi người đẹp"
+}, {
+  "sender" : "user",
+  "message" : "hi"
+}, {
+  "sender" : "bot",
+  "message" : "Hi người đẹp"
+}, {
+  "sender" : "user",
+  "message" : "hi"
+}, {
+  "sender" : "bot",
+  "message" : "Hi người đẹp"
+} ]

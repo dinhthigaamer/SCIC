@@ -1,0 +1,5 @@
+.gradient-bg {
+    -fx-background-color: linear-gradient(to bottom, #3358A8, #DBF2F4);
+    -fx-height: 751px;
+    -fx-width: 1459px;
+}

@@ -16,7 +16,7 @@
                <Button fx:id="Button1" mnemonicParsing="false" styleClass="st" stylesheets="@buttonstyles.css" text="Trang chủ" />
                <Button fx:id="Button2" mnemonicParsing="false" styleClass="st" stylesheets="@buttonstyles.css" text="Trò chuyện" />
                <Button fx:id="Button3" mnemonicParsing="false" styleClass="st" stylesheets="@buttonstyles.css" text="Nhật ký cảm xúc" />
-               <Button fx:id="Button4" mnemonicParsing="false" styleClass="st" stylesheets="@buttonstyles.css" text="Thực hành chăm sóc tinh thần" />
+               <Button fx:id="Button4" mnemonicParsing="false" styleClass="st" stylesheets="@buttonstyles.css" text="Thư viện cảm xúc" />
             </children>
          </HBox>
       </VBox>

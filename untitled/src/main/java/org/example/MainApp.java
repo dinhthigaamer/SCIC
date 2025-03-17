@@ -12,7 +12,7 @@ public class MainApp extends Application {
     public void start(Stage primaryStage) throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Main.fxml"));
         Pane root = loader.load();
-
+//        primaryStage.setResizable(false);
         mainController = loader.getController();
 
         mainController.init();

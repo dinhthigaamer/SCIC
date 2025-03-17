@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane fx:id="Pane" fx:controller="org.example.MethodController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="357.0" prefWidth="319.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label fx:id="name" alignment="TOP_CENTER" layoutX="15.0" layoutY="33.0" prefHeight="207.0" prefWidth="289.0" style="-fx-font-size: 32px; -fx-text-fill: white;" text="Label" />
+      <ImageView fx:id="image" fitHeight="142.0" fitWidth="142.0" layoutX="89.0" layoutY="122.0" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="step" layoutX="66.0" layoutY="281.0" prefHeight="49.0" prefWidth="187.0" alignment="CENTER" style="-fx-text-fill: white; -fx-font-size: 32px;" />
+   </children>
+</AnchorPane>

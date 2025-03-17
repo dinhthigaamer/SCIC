@@ -13,13 +13,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="st" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1">
-  <content>
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="810.0" prefWidth="1459.0" styleClass="st" stylesheets="@ContentStyle.css">
+<ScrollPane fx:id="scrollPane" fx:controller="org.example.HomePageController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="st" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1">
+   <content>
+      <AnchorPane  minWidth="0.0"  prefWidth="1459.0" styleClass="st" stylesheets="@ContentStyle.css">
          <children>
-            <VBox layoutY="-4.0" prefHeight="906.0" prefWidth="1464.0">
+            <VBox layoutY="-4.0"  prefWidth="1464.0">
                <children>
-                  <HBox prefHeight="777.0" prefWidth="1464.0" style="-fx-spacing: 150;" styleClass="stHomePage" stylesheets="@HBoxStyle.css">
+                  <HBox fx:id="lmao"  prefWidth="1464.0" style="-fx-spacing: 150;" styleClass="stHomePage" stylesheets="@HBoxStyle.css">
                      <children>
                         <VBox alignment="CENTER" prefHeight="594.0" prefWidth="448.0">
                            <children>
@@ -54,7 +54,7 @@
                               </Pane>
                               <Pane prefHeight="195.0" prefWidth="638.0" stylesheets="@TextAreaHomePage.css">
                                  <children>
-                                    <Button layoutX="79.0" layoutY="142.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="121.0" stylesheets="@TextAreaHomePage.css" text="Bắt đầu" />
+                                    <Button fx:id="LienHe" layoutX="79.0" layoutY="142.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="121.0" stylesheets="@TextAreaHomePage.css" text="Bắt đầu" />
                                     <ImageView fitHeight="58.0" fitWidth="72.0" layoutX="110.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
                                           <Image url="d82b2da5-7a6c-4461-a906-9bd00501fa19 4.png" />
@@ -71,22 +71,17 @@
                         </VBox>
                      </children>
                   </HBox>
-                  <VBox prefHeight="492.0" prefWidth="1464.0" style="-fx-background-color: #26213B;">
+                  <VBox fx:id="vBox" prefWidth="1464.0" style="-fx-background-color: #26213B;">
                      <children>
-                        <Label alignment="CENTER" prefHeight="24.0" prefWidth="1464.0" styleClass="forlabel3" stylesheets="@TextAreaHomePage.css" text="Liên hệ với những chuyên gia tâm lý hàng đầu Việt Nam" textAlignment="CENTER" wrapText="true" />
-                        <HBox alignment="CENTER" prefHeight="218.0" prefWidth="1442.0" style="-fx-spacing: 100px;">
-                           <children>
-                              <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                              <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                              <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                           </children>
+                        <Label alignment="CENTER" prefWidth="1464.0" styleClass="forlabel3" stylesheets="@TextAreaHomePage.css" text="Liên hệ với những chuyên gia tâm lý hàng đầu Việt Nam" textAlignment="CENTER" wrapText="true" />
+                        <HBox fx:id="hBox"   prefWidth="1442.0" style="-fx-spacing: 100px;">
                         </HBox>
                      </children>
                   </VBox>
                </children>
             </VBox>
          </children></AnchorPane>
-  </content>
+   </content>
    <stylesheets>
       <URL value="@ContentStyle.css" />
       <URL value="@HomePage.css" />

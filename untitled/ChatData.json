@@ -64,4 +64,10 @@
 }, {
   "sender" : "bot",
   "message" : "Hi người đẹp"
+}, {
+  "sender" : "user",
+  "message" : "hello"
+}, {
+  "sender" : "bot",
+  "message" : "Hi người đẹp"
 } ]

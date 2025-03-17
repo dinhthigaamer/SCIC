@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
+
+
+<AnchorPane fx:id="anchorPane" fx:controller="org.example.Content1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="605.0" prefWidth="1436.0" style="-fx-background-color: pink;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="312.0" layoutY="56.0" prefHeight="121.0" prefWidth="974.0" style="-fx-alignment: Center; -fx-wrap-text: true;" stylesheets="@ThuVien.css" text="Thực hành những bài tập này thường xuyên và giữ những thói quen tốt để tinh thần luôn thoải mái nhé " />
+      <FlowPane fx:id="flowPane" layoutY="203.0" prefHeight="402.0" prefWidth="1436.0" />
+      <ImageView fitHeight="75.0" fitWidth="83.0" layoutX="205.0" layoutY="79.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@d82b2da5-7a6c-4461-a906-9bd00501fa19%204.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

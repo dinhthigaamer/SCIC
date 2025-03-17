@@ -17,6 +17,7 @@ public class ChatController {
     public TextArea textArea;
     @FXML
     public ImageView sendButton;
+    public VBox VBox;
     @FXML
     private VBox chatBox; // VBox chứa các tin nhắn
 

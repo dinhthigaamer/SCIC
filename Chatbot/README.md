@@ -28,3 +28,10 @@ Bạn có thể thay đổi các thông tin này tùy ý để cá nhân hóa ph
 ## 4. Thay đổi input cho thử nghiệm
 Các câu hỏi hoặc tình huống tâm lý đầu vào được định nghĩa sẵn trong data/sample_inputs.py. Hệ thống sẽ xử lý từng dòng và sinh phản hồi tương ứng.
 Bạn hoàn toàn có thể cập nhật các đoạn văn này để có các kiểm thử khác.
+
+Cách chạy:
+Đầu tiên chạy app.py bằng dòng lệnh:
+```
+python D:\SCIC\Chatbot\app.py
+```
+Phần giao diện thì chạy MainApp

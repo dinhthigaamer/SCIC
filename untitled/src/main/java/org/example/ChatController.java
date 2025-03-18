@@ -34,7 +34,9 @@ public class ChatController {
         chatManager.addMessage("user", message);
         textArea.clear();
 
-        chatManager.addMessage("bot", bot.reply(message));
+        Platform.runLater(() -> {
+            chatManager.addMessage("bot", bot.reply(message));
+        });
     }
 
     private void init() {
@@ -46,6 +48,7 @@ public class ChatController {
         chatManager = new ChatManager(chatBox, scrollPane); // Khởi tạo ChatManager
         chatData = chatManager.loadChatData();  // Lưu dữ liệu chat
         bot = new Bot(chatManager);
+
         init();
     }
 

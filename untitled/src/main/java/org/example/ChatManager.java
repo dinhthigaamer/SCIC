@@ -10,6 +10,7 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 
 import java.io.File;
@@ -20,7 +21,7 @@ import java.util.Iterator;
 public class ChatManager {
     private final VBox chatVBox; // VBox chứa các tin nhắn
     private final ScrollPane scrollPane;
-    private final String EXTERNAL_FILE_PATH = "ChatData.json";
+    private final String EXTERNAL_FILE_PATH = "untitled/ChatData.json";
     private final ObjectMapper mapper = new ObjectMapper();
 
     public ChatManager(VBox chatVBox, ScrollPane scrollPane) {
@@ -101,10 +102,14 @@ public class ChatManager {
                                 "-fx-text-fill: white; " +
                                 "-fx-font-size: 14px;" +
                                 "-fx-background-color: rgba(0, 0, 0, 0.5);"); // Nền trong suốt 50%
+                messageLabel.setWrapText(true);
+//                messageLabel.setMaxWidth(scrollPane.getWidth() * 0.7);
 
                 // 🔹 HBox chứa tin nhắn
                 HBox messageContainer = new HBox();
                 messageContainer.setPadding(new Insets(5, 10, 5, 10));
+
+                messageContainer.setHgrow(messageLabel, Priority.ALWAYS);
 
                 if ("user".equals(sender)) {
                     // Tin nhắn của người dùng (căn phải)

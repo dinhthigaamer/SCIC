@@ -19,7 +19,7 @@ public class MainApp extends Application {
         mainController.setPrimaryStage(primaryStage, new Scene(root));
 
         primaryStage.setScene(mainController.mainScene);
-        primaryStage.setTitle("Multi-Page JavaFX App");
+        primaryStage.setTitle("Chatbot tâm lý");
         primaryStage.show();
     }
 

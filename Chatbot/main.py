@@ -9,17 +9,18 @@ model = None
 
 def init():
     global tokenizer, model
-    model_path = "mental-health-counsellor"
+    model_path = "mental-health-counselor"
     tokenizer, model = load_model(model_path)
-    
+
     ''' 
-    If do not have a local model, load through huggingface
+    # If do not have a local model, load through huggingface
+    
+    model_path = "khaihoang004/mental-health-counselor"
+    tokenizer, model = load_model(model_path)
     '''
-    # model_path = "khaihoang004/mental-health-counselor"
-    # tokenizer, model = load_model(model_path)
-    
+
     print("Model loaded")
-    
+
 def run_demo():
     model_responses = []
 
@@ -33,12 +34,12 @@ def run_demo():
             cbt_technique=user_config.cbt_technique,
             context=input_text
         )
-        
-        model_response = response.split("User:")[0].strip()
+
+        chatbot_response = response.split("User:")[0].strip()
         print("User:", input_text)
-        print("AI Response:", model_response)
+        print("AI Response:", chatbot_response)
         print(f"Time taken: {time_taken:.2f} seconds\n")
-        model_responses.append(response)
+        model_responses.append(chatbot_response)
 
 def main():
     init()

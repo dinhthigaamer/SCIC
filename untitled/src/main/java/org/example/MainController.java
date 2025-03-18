@@ -64,7 +64,7 @@ public class MainController {
         Button1.setOnAction(e -> {showPage("/HomePage.fxml"); changeColor(0);});
         Button2.setOnAction(e -> {showPage("/ChatPage(1).fxml"); changeColor(1);});
         Button3.setOnAction(e -> {System.out.println(3);});
-        Button4.setOnAction(e -> {showPage("/ThuVienTinhThan.fxml"); changeColor(2);});
+        Button4.setOnAction(e -> {showPage("/ThuVienTinhThan.fxml"); changeColor(3);});
     }
 
     public void initialize(){}

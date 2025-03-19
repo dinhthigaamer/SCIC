@@ -30,8 +30,15 @@ Các câu hỏi hoặc tình huống tâm lý đầu vào được định nghĩ
 Bạn hoàn toàn có thể cập nhật các đoạn văn này để có các kiểm thử khác.
 
 Cách chạy:
+Tải các file của model về, đặt ở file Chatbot:
+```
+https://huggingface.co/khaihoang004/mental-health-counselor
+```
+
 Đầu tiên chạy app.py bằng dòng lệnh:
 ```
 python D:\SCIC\Chatbot\app.py
 ```
 Phần giao diện thì chạy MainApp
+
+

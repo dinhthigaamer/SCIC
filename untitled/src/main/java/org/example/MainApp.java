@@ -8,19 +8,28 @@ import javafx.stage.Stage;
 
 public class MainApp extends Application {
     MainController mainController;
+    Form form;
+
     @Override
     public void start(Stage primaryStage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Main.fxml"));
-        Pane root = loader.load();
+        form = new Form();
+
+        if(JsonUltities.isJsonFileEmpty()) {
+            form.start(primaryStage);
+        }
+        else {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Main.fxml"));
+            Pane root = loader.load();
 //        primaryStage.setResizable(false);
-        mainController = loader.getController();
+            mainController = loader.getController();
 
-        mainController.init();
-        mainController.setPrimaryStage(primaryStage, new Scene(root));
+            mainController.init();
+            mainController.setPrimaryStage(primaryStage, new Scene(root));
 
-        primaryStage.setScene(mainController.mainScene);
-        primaryStage.setTitle("Chatbot tâm lý");
-        primaryStage.show();
+            primaryStage.setScene(mainController.mainScene);
+            primaryStage.setTitle("Chatbot tâm lý");
+            primaryStage.show();
+        }
     }
 
     public static void main(String[] args) {

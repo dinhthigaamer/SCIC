@@ -12,6 +12,8 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
+import okhttp3.Response;
+import org.example.api.GetChatHistory;
 
 import java.io.File;
 import java.io.IOException;
@@ -23,6 +25,7 @@ public class ChatManager {
     private final ScrollPane scrollPane;
     private final String EXTERNAL_FILE_PATH = "untitled/ChatData.json";
     private final ObjectMapper mapper = new ObjectMapper();
+    private final int MAX_MESSAGES = 20; // Giới hạn số tin nhắn hiển thị
 
     public ChatManager(VBox chatVBox, ScrollPane scrollPane) {
         this.chatVBox = chatVBox;
@@ -30,52 +33,66 @@ public class ChatManager {
         updateChatUI(loadChatData());
     }
 
-    public void addMessageToJson(String sender, String message) {
-        try {
-            System.out.println(sender + " " + message);
-            ObjectMapper mapper = new ObjectMapper();
-            File file = new File(EXTERNAL_FILE_PATH);
-
-            ArrayNode chatHistory;
-            if (file.exists()) {
-                // Đọc dữ liệu cũ từ file JSON
-                JsonNode rootNode = mapper.readTree(file);
-                chatHistory = (ArrayNode) rootNode;
-                System.out.println("✅ Tin nhắn đã được lưu vào ChatData.json!");
-            } else {
-                // Nếu file chưa tồn tại, tạo mới một mảng JSON
-                chatHistory = mapper.createArrayNode();
-            }
-
-            // Tạo một ObjectNode cho tin nhắn mới
-            ObjectNode newMessage = mapper.createObjectNode();
-            newMessage.put("sender", sender);
-            newMessage.put("message", message);
-
-            // Thêm tin nhắn mới vào mảng JSON
-            chatHistory.add(newMessage);
-
-            // Ghi lại file JSON
-            mapper.writerWithDefaultPrettyPrinter().writeValue(file, chatHistory);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
     // 🔹 Đọc file ChatData.json từ resources
     public ArrayNode loadChatData() {
         try {
-            File file = new File(EXTERNAL_FILE_PATH);
-            if (!file.exists()) {
-                System.out.println("File Not Found");
+            String history = GetChatHistory.getHistory(UserDataManager.getId(), -1);
+            System.out.println(history);
+            System.out.println(history);
+            ObjectMapper objectMapper = new ObjectMapper();
+            JsonNode rootNode = objectMapper.readTree(history);
+
+            if(rootNode != null  && rootNode.has("history")) {
+                JsonNode jsonNode = rootNode.get("history");
+
+                if (jsonNode.isArray()) {
+                    ArrayNode arrayNode = (ArrayNode) jsonNode;
+
+                    return arrayNode;
+                } else {
+                    System.out.println("The JSON is not an array.");
+                    return null;
+                }
             }
 
-            JsonNode rootNode = mapper.readTree(file);
-            return (ArrayNode) rootNode;
         } catch (IOException e) {
-            e.printStackTrace();
-            return mapper.createArrayNode(); // Trả về mảng rỗng nếu lỗi
+            throw new RuntimeException(e);
         }
+
+        return null;
+    }
+
+    void messageContainer(String sender, String message) {
+        Label messageLabel = new Label(message);
+        messageLabel.setPadding(new Insets(10));
+        messageLabel.setWrapText(true);
+        messageLabel.setStyle(
+                "-fx-background-radius: 15px; " +
+                        "-fx-padding: 10px; " +
+                        "-fx-text-fill: white; " +
+                        "-fx-font-size: 14px;" +
+                        "-fx-background-color: rgba(0, 0, 0, 0.5);"); // Nền trong suốt 50%
+        messageLabel.setWrapText(true);
+//                messageLabel.setMaxWidth(scrollPane.getWidth() * 0.7);
+
+        // 🔹 HBox chứa tin nhắn
+        HBox messageContainer = new HBox();
+        messageContainer.setPadding(new Insets(5, 10, 5, 10));
+
+        messageContainer.setHgrow(messageLabel, Priority.ALWAYS);
+
+        if ("user".equals(sender)) {
+            // Tin nhắn của người dùng (căn phải)
+            messageLabel.setStyle(messageLabel.getStyle() + "-fx-background-color: rgba(30, 144, 255, 0.5);"); // Xanh dương nhạt
+            messageContainer.setAlignment(Pos.CENTER_RIGHT);
+        } else {
+            // Tin nhắn của bot (căn trái)
+            messageLabel.setStyle(messageLabel.getStyle() + "-fx-background-color: rgba(50, 50, 50, 0.5);"); // Xám nhạt
+            messageContainer.setAlignment(Pos.CENTER_LEFT);
+        }
+
+        messageContainer.getChildren().add(messageLabel);
+        chatVBox.getChildren().add( messageContainer );
     }
 
     // 🔹 Cập nhật giao diện với dữ liệu chat
@@ -89,40 +106,15 @@ public class ChatManager {
             chatVBox.getChildren().clear(); // Xóa nội dung cũ
 
             for (JsonNode messageNode : chatData) {
-                String sender = messageNode.get("sender").asText();
-                String message = messageNode.get("message").asText();
+                String sender = messageNode.get("role").asText();
+                String message = messageNode.get("content").asText();
 
                 // 🔹 Tạo label hiển thị nội dung tin nhắn
-                Label messageLabel = new Label(message);
-                messageLabel.setPadding(new Insets(10));
-                messageLabel.setWrapText(true);
-                messageLabel.setStyle(
-                        "-fx-background-radius: 15px; " +
-                                "-fx-padding: 10px; " +
-                                "-fx-text-fill: white; " +
-                                "-fx-font-size: 14px;" +
-                                "-fx-background-color: rgba(0, 0, 0, 0.5);"); // Nền trong suốt 50%
-                messageLabel.setWrapText(true);
-//                messageLabel.setMaxWidth(scrollPane.getWidth() * 0.7);
+                messageContainer(sender, message);
 
-                // 🔹 HBox chứa tin nhắn
-                HBox messageContainer = new HBox();
-                messageContainer.setPadding(new Insets(5, 10, 5, 10));
-
-                messageContainer.setHgrow(messageLabel, Priority.ALWAYS);
-
-                if ("user".equals(sender)) {
-                    // Tin nhắn của người dùng (căn phải)
-                    messageLabel.setStyle(messageLabel.getStyle() + "-fx-background-color: rgba(30, 144, 255, 0.5);"); // Xanh dương nhạt
-                    messageContainer.setAlignment(Pos.CENTER_RIGHT);
-                } else {
-                    // Tin nhắn của bot (căn trái)
-                    messageLabel.setStyle(messageLabel.getStyle() + "-fx-background-color: rgba(50, 50, 50, 0.5);"); // Xám nhạt
-                    messageContainer.setAlignment(Pos.CENTER_LEFT);
+                if (chatVBox.getChildren().size() > MAX_MESSAGES) {
+                    chatVBox.getChildren().remove(0);
                 }
-
-                messageContainer.getChildren().add(messageLabel);
-                chatVBox.getChildren().add(messageContainer);
 
                 scrollToBottom();
             }
@@ -130,8 +122,12 @@ public class ChatManager {
     }
 
     public void addMessage(String sender, String message) {
-        addMessageToJson(sender, message);
-        updateChatUI(loadChatData());
+//        addMessageToJson(sender, message);
+//        new Thread(() -> {
+//            updateChatUI(loadChatData());
+//        }).start();
+        messageContainer(sender, message);
+        scrollToBottom();
     }
 
     private void scrollToBottom() {

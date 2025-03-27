@@ -1,87 +1,117 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useLayoutEffect } from "react";
 import ChatMessage from "../components/ChatMessage";
 import ChatInput from "../components/ChatInput";
 
 export default function Chat() {
+  const API_URL = import.meta.env.VITE_API_URL;
+
   const [messages, setMessages] = useState([
-    { text: "Xin chào! Tôi có thể giúp gì cho bạn?", isUser: false },
+    { text: "Xin chào! Tôi có thể giúp gì cho bạn?", isUser: false, isSuicide: true },
   ]);
-  const [isTyping, setIsTyping] = useState(false);
+  
   const chatContainerRef = useRef(null); // Tạo ref để theo dõi khung chat
+  const [isTyping, setIsTyping] = useState(false);
+  const [Id, setId] = useState(null);
+  const [page, setPage] = useState(1);
+  const [hasMore, setHasMore] = useState(true);
 
-  const handleSendMessage = (text) => {
-    if (!text.trim()) return;
+  useEffect(() => {
+    fetch("/config.json") // Đọc file JSON
+      .then((response) => response.json())
+      .then((data) => setId(data._id))
+      .catch((error) => console.error("Lỗi khi đọc file JSON:", error));
+  });
 
-    setMessages((prev) => [...prev, { text, isUser: true }]);
-    setIsTyping(true);
+  // Load lịch sử tin nhắn trang đầu tiên
+  useEffect(() => {
+    fetch("/config.json") // Đọc file JSON
+      .then((response) => response.json())
+      .then((data) => {
+        setId(data._id);
+        loadMessages(data._id, 0); // Tải trang đầu tiên
+      })
+      .catch((error) => console.error("Lỗi khi đọc file JSON:", error));
+  });
 
-    setTimeout(() => {
-      let botResponse = "Mình đang suy nghĩ... 🤔";
-      let isSuicide = false;
+  const loadMessages = async (userId, pageNumber) => {
+    console.log("Đã load")
+    if (userId === null) return;
 
-      if (
-        text.toLowerCase().includes("buồn") ||
-        text.toLowerCase().includes("chán nản")
-      ) {
-        botResponse =
-          "Mình cảm thấy bạn đang không ổn. Bạn có muốn nhận sự giúp đỡ không?";
-        isSuicide = true;
-      } else {
-        botResponse = "Mình hiểu, bạn có thể chia sẻ thêm với mình nhé! 😊";
+    try {
+      const response = await fetch(`/api/history/${userId}/${pageNumber}`,{
+        method: "GET",
+        headers: { "Content-Type": "application/json" },
+      });
+      console.log(`/api/history/${userId}/${pageNumber}`);
+      const data = await response.json();
+
+      if (data.length === 0) {
+        setHasMore(false); // Không còn tin nhắn cũ để tải
+        return;
       }
 
-      setMessages((prev) => [
-        ...prev,
-        { text: botResponse, isUser: false, isSuicide },
+      setMessages((prevMessages) => [...data, ...prevMessages]);
+    } catch (error) {
+      console.error("Lỗi khi tải tin nhắn cũ:", error);
+    }
+  };
+
+  const handleSendMessage = async (text) => {
+    if (!text.trim()) return;
+
+    // Thêm tin nhắn của người dùng vào giao diện
+    const newMessages = [...messages, { text, isUser: true,isSuicide: false }];
+    setMessages(newMessages);
+    setIsTyping(true);
+  
+    try {
+      // Gửi tin nhắn đến API backend
+      console.log(`/api/chat/${Id}`)
+      const response = await fetch(`/api/chat/${Id}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: text }),
+      });
+      
+      const data = await response.json();
+      console.log("Response:", data.response);
+
+      const formattedMessage = data.response.replace(/\n/g, "\r\n");
+      // Thêm phản hồi từ bot vào danh sách tin nhắn
+      setMessages([...newMessages, { text: formattedMessage, isUser: false, isSuicide: data.isSuicide }]);
+      setPage(0);
+    } catch (error) {
+      console.error("Lỗi khi gọi API:", error);
+      setMessages([
+        ...newMessages,
+        { text: "Xin lỗi, có lỗi xảy ra!", isUser: false },
       ]);
+    } finally {
       setIsTyping(false);
-    }, 2000);
+    }
   };
 
   // Auto-scroll xuống tin nhắn mới nhất
-  useEffect(() => {
-    if (chatContainerRef.current) {
-      chatContainerRef.current.scrollTop =
-        chatContainerRef.current.scrollHeight;
+  useLayoutEffect(() => {
+    if (!isTyping || chatContainerRef.current) {
+      chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
     }
-  }, [messages]);
+  }, [messages, isTyping]); // Chạy khi tin nhắn mới đến hoặc bot hoàn thành
 
-  // const handleSendMessage = async (text) => {
-  //   if (!text.trim()) return;
+  const handleScroll = () => {
+    if (!chatContainerRef.current || !hasMore) return;
 
-  //   // Thêm tin nhắn của người dùng vào giao diện
-  //   const newMessages = [...messages, { text, isUser: true }];
-  //   setMessages(newMessages);
-  //   setIsTyping(true);
-
-  //   try {
-  //     // Gửi tin nhắn đến API backend
-  //     const response = await fetch("https://your-api-url.com/chat", {
-  //       method: "POST",
-  //       headers: { "Content-Type": "application/json" },
-  //       body: JSON.stringify({ message: text }),
-  //     });
-
-  //     const data = await response.json();
-
-  //     // Thêm phản hồi từ bot vào danh sách tin nhắn
-  //     setMessages([...newMessages, { text: data.reply, isUser: false }]);
-  //   } catch (error) {
-  //     console.error("Lỗi khi gọi API:", error);
-  //     setMessages([
-  //       ...newMessages,
-  //       { text: "Xin lỗi, có lỗi xảy ra!", isUser: false },
-  //     ]);
-  //   } finally {
-  //     setIsTyping(false);
-  //   }
-  // };
+    if (chatContainerRef.current.scrollTop === 0) {
+      setPage((prevPage) => prevPage + 1);
+      loadMessages(page + 1, Id);
+    }
+  };
 
   return (
-    <div className="flex flex-col min-h-screen w-[60%] mx-auto">
+    <div ref={chatContainerRef} className="flex flex-col min-h-screen w-[60%] mx-auto" onScroll={handleScroll}>
       <div className="flex-1 p-6 overflow-auto">
         {messages.map((msg, index) => (
-          <ChatMessage key={index} message={msg.text} isUser={msg.isUser} />
+          <ChatMessage key={index} message={msg.text} isUser={msg.isUser} isSuicide={msg.isSuicide}/>
         ))}
         {isTyping && (
           <ChatMessage isTyping={true} isUser={false} isSuicide={true} />

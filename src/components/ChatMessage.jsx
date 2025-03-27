@@ -1,5 +1,7 @@
 import userAvatar from "../assets/chat-icon.png";
 import botAvatar from "../assets/chat-icon.png";
+import Button from "./Button";
+import { useNavigate } from "react-router-dom";
 
 export default function ChatMessage({
   message,
@@ -8,6 +10,7 @@ export default function ChatMessage({
   isSuicide,
   onConfirm,
 }) {
+  const navigate = useNavigate();
   console.log(isSuicide);
   return (
     <div
@@ -26,6 +29,7 @@ export default function ChatMessage({
         className={`p-3 rounded-2xl max-w-[75%] text-justify ${
           isUser ? "bg-blue-500 text-white" : "bg-gray-200 text-black"
         }`}
+        style={{ whiteSpace: "pre-line" }} // Tự động xử lý xuống dòng
       >
         {isTyping ? (
           <div className="flex space-x-1">
@@ -40,7 +44,10 @@ export default function ChatMessage({
               <div className="mt-2">
                 <Button
                   className="bg-red-500 hover:bg-red-700 w-full"
-                  onClick={onConfirm}
+                  onClick={() => {
+                    // onConfirm();
+                    navigate("/CounselorList"); // ✅ Điều hướng đến trang
+                  }}
                 >
                   Đồng ý
                 </Button>

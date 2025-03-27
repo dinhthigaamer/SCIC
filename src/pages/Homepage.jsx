@@ -3,6 +3,7 @@ import Avatar from "../components/Avatar";
 import Button from "../components/Button";
 import chatIcon from "../assets/chat-icon.png";
 import expertIcon from "../assets/expert-icon.png";
+import CounselorList from "./CounselorList";
 
 export default function Homepage() {
   console.log("Hello");
@@ -28,7 +29,7 @@ export default function Homepage() {
           <CardContent className="flex flex-col items-center text-center">
             <Avatar src={expertIcon} className="w-16 h-16 mb-2" />
             <p className="text-lg font-medium">Liên hệ với chuyên gia</p>
-            <Button className="mt-4 bg-red-500 hover:bg-red-700">
+            <Button to="/counselorlist" className="mt-4 bg-red-500 hover:bg-red-700">
               Bắt đầu
             </Button>
           </CardContent>

@@ -1,12 +1,19 @@
-# React + Vite
+# Welcome to PsyTech!
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Khởi chạy phần Front-end**
+-
+- B1: Cài đặt Nodejs
+- B2: Ở phần terminal, nhập **npm install** để tải tài nguyên cần thiết
+- B3: Nhập **npm run dev** để bắt đầu và truy cập đường dẫn localhost được tạo ra.
 
-Currently, two official plugins are available:
+**Khời chạy phần Back-end**
+-
+- Phần file .ipynb được chạy trên **Kaggle** (File này nó hơi kỳ, mình chạy trên colab thì bị lỗi). 
+- Ở **Kaggle**:
+	- Ấn vào create new notebook, vào edit sau đó import file .ipynb lên
+	- Phần **Add input** bên phải, đẩy cái model kia lên, sau đó copy đường dẫn ở đấy rồi paste vào model_path ở code.
+	- Chạy lần lượt từng đoạn code
+	- Sau khi chạy xong đoạn code cuối, paste link ngrok sinh ra để paste vào phần target ở file vite-config ở phần backend.
+	- Ở phần code có data sẵn, mọi người có thể dùng PostMan để test các API
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+**Nếu có lỗi gì thì mọi người tự fix và phát triển tiếp nhé.**

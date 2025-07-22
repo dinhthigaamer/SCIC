@@ -2,6 +2,7 @@
 
 **Mô tả dự án**
 -
+Đây là demo sản phẩm của dự án nhóm mình thi SCIC.
 Dự án này là một chatbot tư vấn tâm lý, giúp người sử dụng giảm bớt lo âu và trong một số trường hợp cần thiết sẽ tư vấn phòng khám tâm lý phù hợp cũng như cảnh báo tới bác sỹ phụ trách nếu như người dùng có ý định tự hại.
 
 **Khởi chạy phần Front-end**
